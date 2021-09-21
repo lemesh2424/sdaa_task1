@@ -43,6 +43,6 @@ export class Triangle extends Shape {
     }
 
     private isEqual(a: number, b: number): boolean {
-        return +a.toFixed(2) === +b.toFixed(2);
+        return a.toFixed(2) === b.toFixed(2);
     }
 }

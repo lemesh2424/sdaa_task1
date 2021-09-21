@@ -5,8 +5,14 @@ export class Point {
     constructor();
     constructor(x: number, y: number);
     constructor(x?: number, y?: number) {
-        this.x = x || 0;
-        this.y = y || 0;
+        if (typeof x !== 'number' || typeof y !== 'number') {
+            this.x = 0;
+            this.y = 0;
+            return;
+        }
+
+        this.x = x;
+        this.y = y;
     }
 
     public toString(): string {
@@ -34,4 +40,6 @@ export class Point {
 
         return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
     }
+
+    
 }

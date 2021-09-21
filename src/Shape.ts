@@ -1,7 +1,6 @@
 import { Point } from "./Point";
 
 const DEFAULT_COLOR = 'green';
-const DEFAULT_FILLING = true;
 
 export abstract class Shape {
     protected color: string;
@@ -10,16 +9,14 @@ export abstract class Shape {
 
     constructor(points: Point[]);
     constructor(points: Point[], color: string, filled: boolean);
-    constructor(points: Point[], color?: string, filled?: boolean) {
+    constructor(points: Point[], color = DEFAULT_COLOR, filled = true) {
         if (points.length < 3) {
             throw new Error(`Current number of points: ${points.length}. Needs 3 or more points.`)
         }
 
         this.points = points;
-        this.color = color || DEFAULT_COLOR;
-        this.filled = typeof filled !== 'boolean'
-            ? DEFAULT_FILLING
-            : filled;
+        this.color = color;
+        this.filled = filled;
     }
 
     private isFilled(): string {
